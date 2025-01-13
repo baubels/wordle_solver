@@ -22,7 +22,7 @@ for i in range(3, 13):
     correct     = []
     init_guess  = "abcdefghijklmnopqrstuv"[:i]
     for _ in range(n_runs):
-        n_gs, wgc = apply_strategy(init_guess, seed=random.randint(1, 1e5))
+        n_gs, wgc = apply_strategy_random(init_guess, seed=random.randint(1, 1e5))
         n_takes.append(n_gs)
         correct.append(wgc)
     n_takes = np.array(n_takes)
