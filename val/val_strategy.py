@@ -1,6 +1,10 @@
 
-# validate the chosen strategy
-# output statistics on average win-rate
+"""Validate the strategy.
+
+The strategy is validated by:
+    1) guessing a large number of times on a set of words from lengths a to b.
+    2) producing metrics and plots indicating guess statistics and success rate.
+"""
 
 import random
 import statistics
@@ -9,16 +13,16 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
-from src.strategy import take_guess
+from src.strategy import apply_strategy
 
 # run strategy
-for i in range(5, 13):
+for i in range(3, 13):
     n_runs      = 30
     n_takes     = []
     correct     = []
     init_guess  = "abcdefghijklmnopqrstuv"[:i]
     for _ in range(n_runs):
-        n_gs, wgc = take_guess(init_guess, seed=random.randint(1, 1e5))
+        n_gs, wgc = apply_strategy(init_guess, seed=random.randint(1, 1e5))
         n_takes.append(n_gs)
         correct.append(wgc)
     n_takes = np.array(n_takes)
